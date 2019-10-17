@@ -100,7 +100,7 @@ class Console
         //输出到控制台
         $lines = '';
         foreach ($trace as $type => $msg) {
-            $lines .= $this->console($type, $msg);
+            $lines .= $this->console($type, empty($msg) ? [] : $msg);
         }
         $js = <<<JS
 
