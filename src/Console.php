@@ -47,7 +47,7 @@ class Console
             return false;
         }
         // 获取基本信息
-        $runtime = number_format(microtime(true) - $app->getBeginTime(), 10);
+        $runtime = number_format(microtime(true) - $app->getBeginTime(), 10, '.', '');
         $reqs    = $runtime > 0 ? number_format(1 / $runtime, 2) : '∞';
         $mem     = number_format((memory_get_usage() - $app->getBeginMem()) / 1024, 2);
 
