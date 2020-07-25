@@ -5,7 +5,8 @@
 ## 安装
 
 ~~~
-composer require topthink/think-trace
+composer remove topthink/think-trace
+composer require hongfs/think-trace:tree-1
 ~~~
 
 ## 配置
