@@ -163,9 +163,10 @@ JS;
     {
         $files = get_included_files();
         $info  = [];
-
+        $rootPath = app()->getRootPath();
+        
         foreach ($files as $key => $file) {
-            $info[] = $file . ' ( ' . number_format(filesize($file) / 1024, 2) . ' KB )';
+            $info[] = str_replace($rootPath, DIRECTORY_SEPARATOR, $file) . ' ( ' . number_format(filesize($file) / 1024, 2) . ' KB )';
         }
 
         return $info;
