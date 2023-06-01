@@ -56,10 +56,8 @@ class TraceDebug
      */
     public function handle($request, Closure $next)
     {
-        $debug = $this->app->isDebug();
-
         // 注册日志监听
-        if ($debug) {
+        if ($this->app->isDebug()) {
             $this->log = [];
             $this->app->event->listen(LogWrite::class, function ($event) {
                 if (empty($this->config['channel']) || $this->config['channel'] == $event->channel) {
@@ -71,7 +69,7 @@ class TraceDebug
         $response = $next($request);
 
         // Trace调试注入
-        if ($debug) {
+        if ($this->app->isDebug()) {
             $data = $response->getContent();
             $this->traceDebug($response, $data);
             $response->content($data);
