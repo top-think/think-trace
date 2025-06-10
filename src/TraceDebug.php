@@ -31,13 +31,13 @@ class TraceDebug
      * Trace日志
      * @var array
      */
-    protected $log = [];
+    protected array $log = [];
 
     /**
      * 配置参数
      * @var array
      */
-    protected $config = [];
+    protected array $config = [];
 
     /** @var App */
     protected $app;
@@ -107,7 +107,7 @@ class TraceDebug
             //TODO 记录
         } else {
             $log    = $this->app->log->getLog($config['channel'] ?? '');
-            
+
             $this->parseLog($log);
             $output = $trace->output($this->app, $response, $this->log);
             if (is_string($output)) {
