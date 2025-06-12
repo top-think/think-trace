@@ -89,8 +89,13 @@ class TraceDebug
      */
     protected function parseLog(array $log)
     {
-        foreach ($log as $record) {
-            $this->log[$record->type][] = $record->message;
+        foreach ($log as $key => $record) {
+            if (is_string($key) && is_array($record)) {
+                $this->log = array_merge_recursive($this->log, $log);
+                break;
+            } else {
+                $this->log[$record->type][] = $record->message;
+            }
         }
     }
 
